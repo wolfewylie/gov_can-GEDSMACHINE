@@ -11,6 +11,12 @@ From there, ```Geds_department_Builder.py``` converts that 750MB JSON file into 
 
 That's the end of the Python portion of this exercise. It produces the nicely formed data we need. The rest is in the Node app, ```index.js```. which mostly uses the Miro REST API. Documentation and a walk-through on building your app and getting the required tokens is [here](https://developers.miro.com/docs/rest-api-how-tos).
 
+There is a placeholder on Line 3 for the MiroAPI key.
+```const api = new MiroApi('***KEY***')```
+
+There is a placeholder on line 34 for the board access token.
+```  board = await api.getBoard('***TOKEN***')```
+
 There are three core functions in ```index.js```:
 * drawHorizontal(departmentName, horizontalOffset, verticalOffset)
 * drawVertical(departmentName, horizontalOffset, verticalOffset)
