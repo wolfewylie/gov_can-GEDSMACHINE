@@ -11,7 +11,6 @@ fs.readFile('govTree.json', 'utf8', (err, data) => {
   } else {
     // parse JSON string to JSON object
     govData = JSON.parse(data)
-    // console.log(Object.keys(govData['Canada']['Employment and Social Development Canada']));
   }
 })
 
@@ -33,7 +32,8 @@ function createShape(shapeData) {
 
 const app = (async function () {
   board = await api.getBoard('***TOKEN***')
-    //   KILL TAGS FUNCTION TO KEEP HANDY
+    // Tags are added to the board without a visual cue until they're attached to something. 
+    // This little loop kills all the tags on the board in case you need to restart. Just keeping it handy here.
     // for await (const tag of await board.getAllTags()) {
     //   const tagtoKill = await board.getTag(tag.id)
     //   tagtoKill.delete()
