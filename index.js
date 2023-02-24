@@ -5,6 +5,11 @@ boardId = ""
 let board = {}
 let govData = {}
 
+// TODO - Sometimes the app fails on timeout errors. Gotta handle that.
+// Feature request - Sorting by user-inputted data
+// Feature discussion - user-supplied csv to link teams together with data attribute titles/thickness/line-type
+
+
 fs.readFile('govTree.json', 'utf8', (err, data) => {
   if (err) {
     console.log(`Error reading file from disk: ${err}`)
@@ -45,7 +50,7 @@ const app = (async function () {
 //     });
 
     // This will draw one department horizontaly 
-    async function drawHorizontal(departmentName, horizontalOffset) {
+    async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) {
         let baseWidth = 87;
         let baseHeight = 212;
         let baseBuffer = 12;
@@ -77,7 +82,7 @@ const app = (async function () {
                     position: {
                         origin: 'center', 
                         x: total_offset + baseBuffer + (deptShapeWidth / 2), 
-                        y: 0
+                        y: verticalOffset
                     },
                     geometry: {height: baseHeight, width: deptShapeWidth},
                     style: {
@@ -114,7 +119,7 @@ const app = (async function () {
                         origin: 'center', 
                         x: total_offset + branch_offset + baseBuffer + (shapeWidth / 2), 
                         // y: baseHeight + baseBuffer
-                        y: baseHeight + (baseBuffer * 4)
+                        y: verticalOffset + baseHeight + (baseBuffer * 4)
                     },
                     geometry: {height: baseHeight + baseBuffer, width: shapeWidth},
                     style: {
@@ -148,7 +153,7 @@ const app = (async function () {
                         position: {
                             origin: 'center', 
                             x: (baseWidth * divisionCount) + total_offset + division_offset + branch_offset + (baseBuffer * divisionCount), 
-                            y: (division_shape_height / 2) + (baseHeight * 2) - (baseBuffer * 1)
+                            y: verticalOffset + (division_shape_height / 2) + (baseHeight * 2) - (baseBuffer * 1)
                         },
                         geometry: {height: division_shape_height, width: baseWidth},
                         style: {
@@ -180,7 +185,7 @@ const app = (async function () {
                             position: {
                                 origin: 'center', 
                                 x: (baseWidth * divisionCount) + total_offset + division_offset + branch_offset + (baseBuffer * divisionCount), 
-                                y: (baseHeight * 2 + stickyHeight * 3) + (stickyHeight * teamCount) + (stickyBuffer * teamCount) 
+                                y: verticalOffset + (baseHeight * 2 + stickyHeight * 3) + (stickyHeight * teamCount) + (stickyBuffer * teamCount) 
                             },
                             geometry: {
                                 height: stickyHeight
@@ -199,6 +204,26 @@ const app = (async function () {
             }
             total_offset = total_offset + deptShapeWidth + baseBuffer;
         }
+
+        const department_title = await board.createTextItem({
+                data: {
+                    content: departmentName},
+            style: {
+                color: '#1a1a1a',
+                fontFamily: 'open_sans',
+                fontSize: '288',
+                textAlign: 'center'
+            },
+            position: {
+                origin: 'center', 
+                x: horizontalOffset + baseBuffer, 
+                y: verticalOffset - baseWidth - baseBuffer
+            },
+            geometry: {
+                rotation: 0, 
+                width: 8000
+            }
+        })
     }
     
     //This one will draw the department vertically
@@ -374,7 +399,7 @@ const app = (async function () {
             },
             geometry: {
                 rotation: -90, 
-                width: baseWidth * 3
+                width: 8000
             }
         })
     }
@@ -539,8 +564,6 @@ const app = (async function () {
                     content: departmentName},
             style: {
                 color: '#1a1a1a',
-                fillColor: '#ffffff',
-                fillOpacity: '0',
                 fontFamily: 'open_sans',
                 fontSize: '288',
                 textAlign: 'center'
@@ -552,7 +575,7 @@ const app = (async function () {
             },
             geometry: {
                 rotation: 90, 
-                width: baseWidth * 3
+                width: 8000
             }
         })
     }
@@ -564,13 +587,13 @@ const app = (async function () {
     //functionName(departmentName, horizontalOffset, verticalOffset)
 
     //drawHorizontal() produces a normal flat tree structure, hierarchy from top to bottom.
-    // drawHorizontal('Employment and Social Development Canada', -5000,-500)
+    drawHorizontal('Employment and Social Development Canada', -5000,-10000)
     
     //drawVertical draws a vertical left-aligned hierarchy with teams flowing out to the right.
-    // drawVertical('Employment and Social Development Canada', -500, -5000)
+    // drawVertical('Crown-Indigenous Relations and Northern Affairs Canada', -5500, -5000)
     
     //DrawInvertedVertical is a right-aligned hierarchy with teams flowing out to the left, good for contrasting against drawVertical
-    drawInvertedVertical('Statistics Canada', 3500, -5000)
+    // drawInvertedVertical('Indigenous Services Canada', 7500, -5000)
 
 
 })()
