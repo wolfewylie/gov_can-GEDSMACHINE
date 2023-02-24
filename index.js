@@ -6,6 +6,7 @@ let board = {}
 let govData = {}
 
 // TODO - Sometimes the app fails on timeout errors. Gotta handle that.
+// Feature request - Colour codes for each department
 // Feature request - Sorting by user-inputted data
 // Feature discussion - user-supplied csv to link teams together with data attribute titles/thickness/line-type
 
