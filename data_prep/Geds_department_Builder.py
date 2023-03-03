@@ -74,5 +74,5 @@ with open('data_prep/json_files/govTree.json', 'w') as outfile:
     json.dump(departmentTree, outfile)
         
 for each_department in departmentTree['Canada']['childOrgs']:
-    with open('data_prep/json_files/' + each_department + '.json', 'w') as outfile:
+    with open('data_prep/json_files/department_files/' + each_department + '.json', 'w') as outfile:
         json.dump(departmentTree['Canada']['childOrgs'][each_department], outfile)
