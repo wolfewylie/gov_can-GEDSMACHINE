@@ -1,0 +1,16 @@
+{
+  "name": "geds-builder",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "mirotone": "^4.3.0"
+  },
+  "devDependencies": {
+    "vite": "3.0.3"
+  }
+}
