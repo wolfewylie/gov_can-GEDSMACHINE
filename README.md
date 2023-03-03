@@ -18,6 +18,7 @@ That's the end of the Python portion of this exercise. The rest takes place in t
 To run locally, you'll need to [create a developer account in Miro](https://developers.miro.com/docs/task-3-run-your-first-app-in-miro) and then:
 
 ```npm install```
+
 ```npm run start```
 
 ToDo stuff and next steps are plentiful.
