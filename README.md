@@ -1,28 +1,23 @@
 # gov_can-GEDSMACHINE
-This takes the open data JSON from GEDS on the Government of Canada Open Data portal and inverts it into a tree of the entire government's structure. Secondly, it uses the Miro API to create a team-by-team visualization of that structure.
-
-```node install```
+This takes the open data JSON from GEDS on the Government of Canada Open Data portal and inverts it into a tree of the entire government's structure. Secondly, it integrates with Miro to create a team-by-team visualization of that structure.
 
 The GEDS data comes from the open data portal [here](https://api.geds-sage.gc.ca/GEDS20/dist/opendata/gedsOpenDataJson.zip).
 
-That data is not well formed for our needs, though. So ```geds_transformery.py``` just uses regex to read each person in the Open Data file into a proper list.
+That data is not well formed for our needs, though. So the ```data_prep``` directory includes three scripts to make it real:
 
-From there, ```Geds_department_Builder.py``` converts that 750MB JSON file into a more concise 5.5MB JSON file that represents every team in the Government of Canada and its population as listed in the contact directory.
+```geds_transformery.py``` just uses regex to read each person in the Open Data file into a proper list.
 
-That's the end of the Python portion of this exercise. It produces the nicely formed data we need. The rest is in the Node app, ```index.js```. which mostly uses the Miro REST API. Documentation and a walk-through on building your app and getting the required tokens is [here](https://developers.miro.com/docs/rest-api-how-tos).
+``Geds_department_Builder.py``` converts that 750MB JSON file into a more concise 5.5MB JSON file that represents every team in the Government of Canada and its population count.
 
-There is a placeholder on Line 3 for the MiroAPI key.
-```const api = new MiroApi('***KEY***')```
+That script also spits out a json file for each federal department. For this exercise, I'm storing those in a Microsoft OneDrive folder.
 
-There is a placeholder on line 34 for the board access token.
-```  board = await api.getBoard('***TOKEN***')```
+```oneDrive_reader.py``` reads that folder and gathers the stable file download links into another json file that we can feed into Miro.
 
-There are three core functions in ```index.js```:
-* drawHorizontal(departmentName, horizontalOffset, verticalOffset)
-* drawVertical(departmentName, horizontalOffset, verticalOffset)
-* drawInvertedVertical(departmentName, horizontalOffset, verticalOffset)
+That's the end of the Python portion of this exercise. The rest takes place in the ```miro-app``` directory.
 
-drawVertical() is a left-aligned tree with teams flowing out to the right. 
-drawInvertedVertical is a right-aligned tree with teams flowing out to the left.
+To run locally, you'll need to [create a developer account in Miro](https://developers.miro.com/docs/task-3-run-your-first-app-in-miro) and then:
 
-Horizontal and vertical offsets establish the centre of the drawing so that two departments can be drawn on the same board without overlapping each other.
+```npm install```
+```npm run start```
+
+ToDo stuff and next steps are plentiful.
