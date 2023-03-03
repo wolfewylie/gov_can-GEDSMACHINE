@@ -2,7 +2,7 @@ import json
 import time
 
 #Start with the properly formatted data produced by geds_transformer.py
-filename = "json_files/updatedGEDS.json"
+filename = "data_prep/json_files/updatedGEDS.json"
 gedsData = {}
 #There are a lot of orphan teams and branches in the data, so this will help to reduce random duplicates
 lowestTree = {}
@@ -43,7 +43,7 @@ for each_staffer in gedsData:
         lowestTree[department_layers[0]['id']]['layers'] = department_layers
         lowestTree[department_layers[0]['id']]['depth'] = len(department_layers)
 
-with open('json_files/DepartmentTree.json', 'w') as outfile:
+with open('data_prep/json_files/DepartmentTree.json', 'w') as outfile:
     json.dump(lowestTree, outfile)
 
 #Now that we have a proper tree structure with no duplicate team IDs, each team placed as deeply in the org structure as possible
@@ -70,9 +70,9 @@ for each_staff_member in gedsData:
         current_org = current_org[team_layers[layer_count]['name']]['childOrgs']
         layer_count = layer_count + 1
 
-with open('json_files/govTree.json', 'w') as outfile:
+with open('data_prep/json_files/govTree.json', 'w') as outfile:
     json.dump(departmentTree, outfile)
         
 for each_department in departmentTree['Canada']['childOrgs']:
-    with open('json_files/' + each_department + '.json', 'w') as outfile:
+    with open('data_prep/json_files/' + each_department + '.json', 'w') as outfile:
         json.dump(departmentTree['Canada']['childOrgs'][each_department], outfile)

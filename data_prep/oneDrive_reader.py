@@ -26,5 +26,5 @@ for request in driver.requests:
             deptDownloadURL = every_file['@content.downloadUrl']
             downloadURLs[deptName] = deptDownloadURL
 
-with open('json_files/OneDrivedataLinks.json', 'w') as outfile:
+with open('data_prep/json_files/OneDrivedataLinks.json', 'w') as outfile:
     json.dump(downloadURLs, outfile)
