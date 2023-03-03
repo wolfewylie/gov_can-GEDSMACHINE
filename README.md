@@ -7,7 +7,7 @@ That data is not well formed for our needs, though. So the ```data_prep``` direc
 
 ```geds_transformery.py``` just uses regex to read each person in the Open Data file into a proper list.
 
-``Geds_department_Builder.py``` converts that 750MB JSON file into a more concise 5.5MB JSON file that represents every team in the Government of Canada and its population count.
+```Geds_department_Builder.py``` converts that 750MB JSON file into a more concise 5.5MB JSON file that represents every team in the Government of Canada and its population count.
 
 That script also spits out a json file for each federal department. For this exercise, I'm storing those in a Microsoft OneDrive folder.
 
