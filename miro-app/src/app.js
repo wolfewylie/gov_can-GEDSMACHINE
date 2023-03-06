@@ -636,11 +636,11 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
 document.getElementById('drawStart').addEventListener('click', function() {
   let departmentToDraw = document.getElementById('selectDept').value;
   let layoutChoice = document.getElementById('selectLayout').value;
-  let horizontalOffset = document.getElementById('horOffset').value;
+  let horizontalOffset = parseInt(document.getElementById('horOffset').value);
   if (horizontalOffset == "") {
     horizontalOffset = 0;
   }
-  let verticalOffset = document.getElementById('vertOffset').value;
+  let verticalOffset = parseInt(document.getElementById('vertOffset').value);
   if (verticalOffset == "") {
     verticalOffset = 0;
   }
