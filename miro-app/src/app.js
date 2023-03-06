@@ -186,7 +186,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
   let departmentFontSize = 36;
   let secondaryFontSize = 13;
 
-  total_offset = horizontalOffset
+  total_offset = parseInt(horizontalOffset)
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -334,8 +334,8 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
   let departmentFontSize = 36;
   let secondaryFontSize = 13;
 
-  total_vertical_offset = verticalOffset
-  total_horizontal_offset = horizontalOffset
+  total_vertical_offset = parseInt(verticalOffset)
+  total_horizontal_offset = parseInt(horizontalOffset)
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -491,8 +491,8 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
   let departmentFontSize = 36;
   let secondaryFontSize = 13;
 
-  total_vertical_offset = verticalOffset
-  total_horizontal_offset = horizontalOffset
+  total_vertical_offset = parseInt(verticalOffset)
+  total_horizontal_offset = parseInt(horizontalOffset)
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -622,9 +622,9 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
           color: '#1a1a1a',
           fontFamily: 'open_sans',
           fontSize: 288,
-          textAlign: 'center'
+          textAlign: 'left'
       },
-      origin: 'left', 
+      origin: 'center', 
       x: horizontalOffset + baseWidth + baseBuffer * 4, 
       y: 4000,
       rotation: 90, 
@@ -636,14 +636,14 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
 document.getElementById('drawStart').addEventListener('click', function() {
   let departmentToDraw = document.getElementById('selectDept').value;
   let layoutChoice = document.getElementById('selectLayout').value;
-  let horizontalOffset = parseInt(document.getElementById('horOffset').value);
-  if (horizontalOffset == "") {
-    horizontalOffset = 0;
-  }
-  let verticalOffset = parseInt(document.getElementById('vertOffset').value);
-  if (verticalOffset == "") {
-    verticalOffset = 0;
-  }
+//   let horizontalOffset = parseInt(document.getElementById('horOffset').value);
+//   if (horizontalOffset == NaN) {
+    let horizontalOffset = 0;
+//   }
+//   let verticalOffset = parseInt(document.getElementById('vertOffset').value);
+//   if (verticalOffset == NaN) {
+    let verticalOffset = 0;
+//   }
   let datalink = linkResources[departmentToDraw]
   fetch(datalink)
   .then((response) => response.json())
