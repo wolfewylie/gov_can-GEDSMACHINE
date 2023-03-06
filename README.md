@@ -21,4 +21,6 @@ To run locally, you'll need to [create a developer account in Miro](https://deve
 
 ```npm run start```
 
+To install the app in Miro, [click here](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F) and follow the prompts.
+
 ToDo stuff and next steps are plentiful.
