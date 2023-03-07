@@ -23,6 +23,8 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+
+      analytics.logEvent('page_view', { page_title: "landing_page"});
     </script>
     <title>Magic GEDS Machine for the Government of Canada</title>
     <!-- Add EN/FR toggles to make bilingual -->
