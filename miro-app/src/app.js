@@ -645,14 +645,15 @@ document.getElementById('drawStart').addEventListener('click', function() {
     let verticalOffset = 0;
 //   }
   let datalink = linkResources[departmentToDraw]
-  analytics.logEvent('select_content', {
-    content_type: "department",
-    item_id: departmentToDraw
-});
-  analytics.logEvent('select_content', {
-    content_type: "format",
-    item_id: layoutChoice
-});
+//   logEvent(analytics, 'select_content', {
+//     content_type: "department",
+//     content_id: departmentToDraw
+//     });
+//   logEvent(analytics, 'select_content', {
+//     content_type: "format",
+//     content_id: layoutChoice
+//     });
+
   fetch(datalink)
   .then((response) => response.json())
   .then(function(data) { 
