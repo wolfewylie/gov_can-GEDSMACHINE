@@ -21,8 +21,10 @@ for each_staffer in gedsData:
         working_layer = current_layer['organization']
         current_org = {}
         current_org['id'] = working_layer['id']
-        current_org['name'] = working_layer['description']['en']
-        current_org['abbreviation'] = working_layer['acronym']['en']
+        current_org['name_en'] = working_layer['description']['en']
+        current_org['name_fr'] = working_layer['description']['fr']
+        current_org['abbreviation_en'] = working_layer['acronym']['en']
+        current_org['abbreviation_fr'] = working_layer['acronym']['fr']
         current_org['population'] = 1
         department_layers.append(current_org)
         if "organizationInformation" not in working_layer.keys():
@@ -33,7 +35,7 @@ for each_staffer in gedsData:
     #We have to check to see if we have a deeper listing for this team than this discovery of it. 
     #We'll store the deepest version of a team as the true version. Then each person can be properly mapped to their team.
     if department_layers[0]['id'] not in lowestTree:
-        lowestTree[department_layers[0]['id']] = {"id": department_layers[0]['id'], "depth": len(department_layers), "layers": department_layers, 'name': department_layers[0]['name'], 'abbreviation': department_layers[0]['name']}
+        lowestTree[department_layers[0]['id']] = {"id": department_layers[0]['id'], "depth": len(department_layers), "layers": department_layers, 'name_en': department_layers[0]['name_en'], 'name_fr': department_layers[0]['name_fr'], 'abbreviation_en': department_layers[0]['abbreviation_en'], 'abbreviation_fr': department_layers[0]['abbreviation_fr']}
         stored_depth = len(department_layers)
         current_depth = len(department_layers)
     else:
