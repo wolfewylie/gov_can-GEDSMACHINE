@@ -61,15 +61,17 @@ for each_staff_member in gedsData:
     current_org = departmentTree["Canada"]['childOrgs']
     while layer_count < layer_depth:
         try:
-            current_org[team_layers[layer_count]['name']]['population'] = current_org[team_layers[layer_count]['name']]['population'] + 1
+            current_org[team_layers[layer_count]['name_en']]['population'] = current_org[team_layers[layer_count]['name_en']]['population'] + 1
         except:
-            current_org[team_layers[layer_count]['name']] = {}
-            current_org[team_layers[layer_count]['name']]['name'] = team_layers[layer_count]['name']
-            current_org[team_layers[layer_count]['name']]['id'] = team_layers[layer_count]['id']
-            current_org[team_layers[layer_count]['name']]['abbreviation'] = team_layers[layer_count]['abbreviation']
-            current_org[team_layers[layer_count]['name']]['population'] = team_layers[layer_count]['population']
-            current_org[team_layers[layer_count]['name']]['childOrgs'] = {}
-        current_org = current_org[team_layers[layer_count]['name']]['childOrgs']
+            current_org[team_layers[layer_count]['name_en']] = {}
+            current_org[team_layers[layer_count]['name_en']]['name_en'] = team_layers[layer_count]['name_en']
+            current_org[team_layers[layer_count]['name_en']]['name_fr'] = team_layers[layer_count]['name_fr']
+            current_org[team_layers[layer_count]['name_en']]['id'] = team_layers[layer_count]['id']
+            current_org[team_layers[layer_count]['name_en']]['abbreviation_en'] = team_layers[layer_count]['abbreviation_en']
+            current_org[team_layers[layer_count]['name_en']]['abbreviation_fr'] = team_layers[layer_count]['abbreviation_fr']
+            current_org[team_layers[layer_count]['name_en']]['population'] = team_layers[layer_count]['population']
+            current_org[team_layers[layer_count]['name_en']]['childOrgs'] = {}
+        current_org = current_org[team_layers[layer_count]['name_en']]['childOrgs']
         layer_count = layer_count + 1
 
 with open('data_prep/json_files/govTree.json', 'w') as outfile:
