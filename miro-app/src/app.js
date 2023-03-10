@@ -633,6 +633,17 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
 }
 
 //Setting up the listeners for the user-facing menus and buttons
+document.getElementById('languageToggle').addEventListener('click', function() {
+    if(document.getElementById('languageToggle').value == "EN") {
+        document.getElementById('languageToggle').innerHTML = "EN"
+        document.getElementById('languageToggle').value = "FR"
+    }
+    if(document.getElementById('languageToggle').value == "FR") {
+        document.getElementById('languageToggle').innerHTML = "FR"
+        document.getElementById('languageToggle').value = "EN"
+    }
+})
+
 document.getElementById('drawStart').addEventListener('click', function() {
   let departmentToDraw = document.getElementById('selectDept').value;
   let layoutChoice = document.getElementById('selectLayout').value;
