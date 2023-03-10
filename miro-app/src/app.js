@@ -174,7 +174,7 @@ function createShape(shapeData) {
 }
 
 //this one will draw the department horizontally
-async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) {
+async function drawHorizontal(departmentName, horizontalOffset, verticalOffset, isFrench) {
   let baseWidth = 87;
   let baseHeight = 212;
   let baseBuffer = 12;
@@ -199,7 +199,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
           deptShapeWidth = 1500
       }
       let departmentShape = await createShape({
-        content: department + " (" + element.population + " people)",
+        content: (isFrench ? element.name_fr : element.name_en) + " (" + element.population + (isFrench ? ' personnes)' : ' people)'),
         shape: 'round_rectangle',
         style: {
             borderOpacity: 0.8,
@@ -231,7 +231,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
           let shapeHeight = (baseHeight * 3) + (baseHeight * secondary_branch_length) + (baseBuffer * secondary_branch_length) + baseHeight / 2;
           let branchShape = await createShape({
             shape: 'round_rectangle',
-            content: branch.name + " (" + branch.population + " people)",
+            content: (isFrench ? branch.name_fr : branch.name_en) + " (" + branch.population + (isFrench ? ' personnes)' : ' people)'),
             x: total_offset + branch_offset + baseBuffer + (shapeWidth / 2), 
             y: verticalOffset + baseHeight + (baseBuffer * 4),
             height: baseHeight + baseBuffer, 
@@ -261,7 +261,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
               let division_shape_height = (stickyHeight * final_depth_child_orgs) + (baseBuffer * final_depth_child_orgs) + baseHeight / 2;;
               let divisionTicket = await createShape({
                 shape: 'round_rectangle',
-                content: division.name + " (" + division.population + " people)",
+                content: (isFrench ? division.name_fr : division.name_en) + " (" + division.population + (isFrench ? ' personnes)' : ' people)'),
                 x: (baseWidth * divisionCount) + total_offset + division_offset + branch_offset + (baseBuffer * divisionCount), 
                 y: verticalOffset + (division_shape_height / 2) + (baseHeight * 2) - (baseBuffer * 1),
                 height: division_shape_height, width: baseWidth,
@@ -281,7 +281,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
                   let team_details = govData['childOrgs'][department]['childOrgs'][branch_node]['childOrgs'][division_node]['childOrgs'][each_unit]
                   
                   let teamLabel = makeSticky({
-                      content: team_details.name + " (" + team_details.population + " people)",
+                      content: (isFrench ? team_details.name_fr : team_details.name_en) + " (" + team_details.population + (isFrench ? ' personnes)' : ' people)'),
                       style: {
                           fillColor: 'light_yellow',
                           textAlign: 'left',
@@ -307,7 +307,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
   }
 
   const department_title = await board.createText({
-      content: departmentName,
+      content: (isFrench ? govData.name_fr : govData.name_en),
       style: {
           color: '#1a1a1a',
           fontFamily: 'open_sans',
@@ -322,7 +322,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset) 
 }
 
 //This one will draw the department vertically
-async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
+async function drawVertical(departmentName, horizontalOffset, verticalOffset, isFrench) {
   let baseHeight = 87;
   let baseWidth = 212;
   let baseBuffer = 12;
@@ -349,7 +349,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
       }
       let departmentShape = await createShape({
         shape: 'round_rectangle',
-        content: department + " (" + element.population + " people)",
+        content: (isFrench ? element.name_fr : element.name_en) + " (" + element.population + (isFrench ? ' personnes)' : ' people)'),
         origin: 'center', 
         y: total_vertical_offset + baseBuffer + (deptShapeHeight / 2), 
         x: total_horizontal_offset,
@@ -381,7 +381,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
           let shapeHeight = baseHeight + (branchChildLength * (baseHeight + baseBuffer)) + (baseBuffer * branchChildLength);
           let branchShape = await createShape({
             shape: 'round_rectangle',
-            content: branch.name + " (" + branch.population + " people)",
+            content: (isFrench ? branch.name_fr : branch.name_en) + " (" + branch.population + (isFrench ? ' personnes)' : ' people)'),
             origin: 'center', 
             y: total_vertical_offset + branch_offset + baseBuffer + (shapeHeight / 2), 
             x: total_horizontal_offset + (baseWidth + (baseBuffer * 4)),
@@ -412,7 +412,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
               let division_shape_width = (stickyHeight * final_depth_child_orgs) + (baseBuffer * final_depth_child_orgs) + baseWidth / 2;;
               let divisionTicket = await createShape({
                 shape: 'round_rectangle',
-                content: division.name + " (" + division.population + " people)",
+                content: (isFrench ? division.name_fr : division.name_en) + " (" + division.population + (isFrench ? ' personnes)' : ' people)'),
                 origin: 'center', 
                 y: (baseHeight * divisionCount) + total_vertical_offset + division_offset + branch_offset + (baseBuffer * divisionCount), 
                 x: total_horizontal_offset + ((division_shape_width / 2) + (baseWidth * 2) - (baseBuffer * 1)),
@@ -436,7 +436,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
                   
                   let teamLabel = makeSticky({
                     shape: 'square', 
-                    content: team_details.name + " (" + team_details.population + " people)",
+                    content: (isFrench ? team_details.name_fr : team_details.name_en) + " (" + team_details.population + (isFrench ? ' personnes)' : ' people)'),
                     style: {
                         fillColor: 'light_yellow',
                         textAlign: 'left',
@@ -461,7 +461,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
       total_vertical_offset = total_vertical_offset + deptShapeHeight + baseBuffer;
   }
   const department_title = await board.createText({
-    content: departmentName,
+    content: (isFrench ? govData.name_fr : govData.name_en),
     style: {
         color: '#1a1a1a',
         fillColor: '#ffffff',
@@ -479,7 +479,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset) {
 }
 
 //This is the same as the drawVertical but flipped along the Y axis so it draws to the left instead of the right.
-async function drawInvertedVertical(departmentName, horizontalOffset, verticalOffset) {
+async function drawInvertedVertical(departmentName, horizontalOffset, verticalOffset, isFrench) {
   let baseHeight = 87;
   let baseWidth = 212;
   let baseBuffer = 12;
@@ -506,7 +506,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
       }
       let departmentShape = await createShape({
         shape: 'round_rectangle',
-        content: department + " (" + element.population + " people)",
+        content: (isFrench ? element.name_fr : element.name_en) + " (" + element.population + (isFrench ? ' personnes)' : ' people)'),
         origin: 'center', 
         y: total_vertical_offset + baseBuffer + (deptShapeHeight / 2), 
         x: total_horizontal_offset,
@@ -538,7 +538,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
           let shapeHeight = baseHeight + (branchChildLength * (baseHeight + baseBuffer)) + (baseBuffer * branchChildLength);
           let branchShape = await createShape({
             shape: 'round_rectangle',
-            content: branch.name + " (" + branch.population + " people)",
+            content: (isFrench ? branch.name_fr : branch.name_en) + " (" + branch.population + (isFrench ? ' personnes)' : ' people)'),
             origin: 'center', 
             y: total_vertical_offset + branch_offset + baseBuffer + (shapeHeight / 2), 
             x: total_horizontal_offset - (baseWidth + (baseBuffer * 4)),
@@ -569,7 +569,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
               let division_shape_width = (stickyHeight * final_depth_child_orgs) + (baseBuffer * final_depth_child_orgs) + baseWidth / 2;;
               let divisionTicket = await createShape({
                 shape: 'round_rectangle',
-                content: division.name + " (" + division.population + " people)",
+                content: (isFrench ? division.name_fr : division.name_en) + " (" + division.population + (isFrench ? ' personnes)' : ' people)'),
                 origin: 'center', 
                 y: (baseHeight * divisionCount) + total_vertical_offset + division_offset + branch_offset + (baseBuffer * divisionCount), 
                 x: total_horizontal_offset - ((division_shape_width / 2) + (baseWidth * 2) - (baseBuffer * 1)),
@@ -593,7 +593,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
                   
                   let teamLabel = makeSticky({
                       shape: 'square', 
-                      content: team_details.name + " (" + team_details.population + " people)",
+                      content: (isFrench ? team_details.name_fr : team_details.name_en) + " (" + team_details.population + (isFrench ? ' personnes)' : ' people)'),
                       style: {
                           fillColor: 'light_yellow',
                           textAlign: 'left',
@@ -617,7 +617,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
       total_vertical_offset = total_vertical_offset + deptShapeHeight + baseBuffer;
   }
   const department_title = await board.createText({
-      content: departmentName,
+      content: (isFrench ? govData.name_fr : govData.name_en),
       style: {
           color: '#1a1a1a',
           fontFamily: 'open_sans',
@@ -636,6 +636,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
 document.getElementById('drawStart').addEventListener('click', function() {
   let departmentToDraw = document.getElementById('selectDept').value;
   let layoutChoice = document.getElementById('selectLayout').value;
+  let frenchValue = True;
 //   let horizontalOffset = parseInt(document.getElementById('horOffset').value);
 //   if (horizontalOffset == NaN) {
     let horizontalOffset = 0;
@@ -660,13 +661,13 @@ document.getElementById('drawStart').addEventListener('click', function() {
     govData = data;
     let headlineName = data['name']
     if (layoutChoice == "horizontal") {
-      drawHorizontal(departmentToDraw, horizontalOffset, verticalOffset)
+      drawHorizontal(departmentToDraw, horizontalOffset, verticalOffset, frenchValue)
     }
     if (layoutChoice == "vertical") {
-      drawVertical(departmentToDraw, horizontalOffset, verticalOffset)
+      drawVertical(departmentToDraw, horizontalOffset, verticalOffset, frenchValue)
     }
     if (layoutChoice == "invertedVertical") {
-      drawInvertedVertical(departmentToDraw, horizontalOffset, verticalOffset)
+      drawInvertedVertical(departmentToDraw, horizontalOffset, verticalOffset, frenchValue)
     }
   });
 })
