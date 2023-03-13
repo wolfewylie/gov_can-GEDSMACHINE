@@ -21,8 +21,26 @@ To run locally, you'll need to [create a developer account in Miro](https://deve
 
 ```npm run start```
 
-To install the app in Miro, [click here](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F) and follow the prompts.
-
-ToDo stuff and next steps are plentiful.
-
 Privacy: The app collects anonymous Google Analytics to track approximately popularity and usage. No individual or identifiable information is collected or stored. No Miro account information is collected or stored.
+
+### To install the app in Miro
+The app install link [is here](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F). Click it and follow the prompts.
+
+![The Miro App installation screen. Pick a team to install the app for all boards in that team.](screenshots/permissions.png "The Miro App installation screen")
+
+From there, Miro may or may not send you back to your boards. So click the Miro icon in the top-left corner or go directly to [Miro.com](https://www.miro.com).
+
+![The app has been installed for all of the boards in your selected team](screenshots/boards.png "The Miro board picking screen")
+
+Once you have a board open, the app drawer is on the left-hand toolbar, at the bottom. If you open it, you should see the Magic GEDS Machine listed. 
+
+![The app is listed with the rest of the Miro apps](screenshots/apps.png "The Miro board picking screen")
+
+This will open the Magic GEDS Machine app screen. 
+
+![The app interface allows you to pick a department and a layout](screenshots/app_screen.png "The app interface allows you to pick a department and a layout")
+
+Once you draw a department or two, you can use Miro's built-in features to draw linkages between them to represent consultations, data, financial obligations or anything else your heart desires.
+
+![Linkages between teams at the Canadian Space Agency and the Canadian Dairy Commission](screenshots/draw.png "Linkages between teams at the Canadian Space Agency and the Canadian Dairy Commission")
+
