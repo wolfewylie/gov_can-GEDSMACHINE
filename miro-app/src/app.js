@@ -186,6 +186,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset, 
   let secondaryFontSize = 13;
 
   total_offset = parseInt(horizontalOffset)
+  let shapes = [];
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -215,6 +216,8 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset, 
         width: deptShapeWidth,
         height: baseHeight,
       })
+      shapes.push(departmentShape)
+
       let subCount = 0;
       let branch_offset = 0
       for (let branch_node in govData['childOrgs'][department]['childOrgs']) {
@@ -295,7 +298,6 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset, 
               }
 
               divisionCount++
-
           }
           division_offset = division_offset + baseWidth + baseBuffer
           branch_offset = branch_offset + shapeWidth + baseBuffer
@@ -303,6 +305,7 @@ async function drawHorizontal(departmentName, horizontalOffset, verticalOffset, 
           count++
       }
       total_offset = total_offset + deptShapeWidth + baseBuffer;
+      miro.board.viewport.zoomTo(shapes);
   }
 
   const department_title = await board.createText({
@@ -335,6 +338,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset, is
 
   total_vertical_offset = parseInt(verticalOffset)
   total_horizontal_offset = parseInt(horizontalOffset)
+  let shapes = [];
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -365,6 +369,7 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset, is
             textAlignVertical: 'middle'
         }
     })
+      shapes.push(departmentShape)
 
       let subCount = 0;
       let branch_offset = 0
@@ -458,7 +463,8 @@ async function drawVertical(departmentName, horizontalOffset, verticalOffset, is
           count++
       }
       total_vertical_offset = total_vertical_offset + deptShapeHeight + baseBuffer;
-  }
+      miro.board.viewport.zoomTo(shapes);
+    }
   const department_title = await board.createText({
     content: (isFrench ? govData.name_fr : govData.name_en),
     style: {
@@ -492,6 +498,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
 
   total_vertical_offset = parseInt(verticalOffset)
   total_horizontal_offset = parseInt(horizontalOffset)
+  let shapes = [];
   for (const department in govData['childOrgs']) {
       let element = govData['childOrgs'][department] 
       let departmentChildLength = Object.keys(element['childOrgs']).length; 
@@ -522,6 +529,8 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
             textAlignVertical: 'middle'
         }
           })
+
+      shapes.push(departmentShape)
 
       let subCount = 0;
       let branch_offset = 0
@@ -614,6 +623,7 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
           count++
       }
       total_vertical_offset = total_vertical_offset + deptShapeHeight + baseBuffer;
+      miro.board.viewport.zoomTo(shapes);
   }
   const department_title = await board.createText({
       content: (isFrench ? govData.name_fr : govData.name_en),
