@@ -81,15 +81,21 @@ with open('data_prep/json_files/govTree.json', 'w') as outfile:
 departmentList = []
 
 for each_department in departmentTree['Canada']['childOrgs']:
-    departmentList.append(each_department)
+    departmentList.append((departmentTree['Canada']['childOrgs'][each_department]['name_en'], departmentTree['Canada']['childOrgs'][each_department]['name_fr']))
     with open('data_prep/json_files/department_files/' + each_department + '.json', 'w') as outfile:
         json.dump(departmentTree['Canada']['childOrgs'][each_department], outfile)
 
-departmentList.sort(key=str.lower)
+#sort it according to English names
+departmentList.sort(key=lambda a: a[0])
+
 for each_option in departmentList:
-    print('<option selected value="' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '">' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '</option>')
+    print('<option selected value="' + each_option[0] + '">' + each_option[0] + '</option>')
+
 print(' ')
 print('-----------------------------')
 print(' ')
+
+#sort it according to French names
+departmentList.sort(key=lambda a: a[1])
 for each_option in departmentList:
-    print('<option selected value="' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '">' + departmentTree['Canada']['childOrgs'][each_option]['name_fr'] + '</option>')
+    print('<option selected value="' + each_option[0] + '">' + each_option[1] + '</option>')

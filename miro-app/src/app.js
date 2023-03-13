@@ -666,7 +666,6 @@ document.getElementById('languageToggle').addEventListener('click', function() {
 document.getElementById('drawStart').addEventListener('click', function() {
   let departmentToDraw = document.querySelector('#selectDept.' + activeLanguage).value;
   let layoutChoice = document.querySelector('#selectLayout.' + activeLanguage).value;
-  activeLanguage == "lang_fr" ? frenchValue = true : frenchValue = false;
 //   let horizontalOffset = parseInt(document.getElementById('horOffset').value);
 //   if (horizontalOffset == NaN) {
     let horizontalOffset = 0;
