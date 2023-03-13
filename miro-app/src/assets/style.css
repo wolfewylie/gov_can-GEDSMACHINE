@@ -39,6 +39,11 @@ img {
   text-decoration: none;
 }
 
+#languageToggle { 
+  float: right;
+  margin-left: 95%;
+}
+
 .invisible {
   display: none;
 }

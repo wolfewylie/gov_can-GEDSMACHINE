@@ -28,19 +28,18 @@
       logEvent(analytics, 'page_view', { page_title: "landing_page"});
 
     </script>
-    <title class="leng_en">Magic GEDS Machine for the Government of Canada</title>
-    <title class="leng_fr invisible">Machine magique SAGE pour le gouvernement du Canada</title>
+    <title class="title_text leng_en">Magic GEDS Machine for the Government of Canada</title>
     <!-- Add EN/FR toggles to make bilingual -->
   </head>
   <body>
     <div class="grid wrapper">
       <div class="cs1 ce12">
         <button class="button button-primary button-small" type="button" id="languageToggle" value="EN">FR</button>
-        <p class="lang_en">This app will create an org chart for any top-level department in the Government of Canada, as it is represented in GEDS, down to the director level.</p>
-        <p class="lang_fr invisible">Cette application créera un organigramme pour n'importe quel ministère de haut niveau du gouvernement du Canada, tel qu'il est représenté dans le SAGE, jusqu'au niveau du directeur.</p>
+        <p class="intro_graph lang_en">This app will create an org chart for any top-level department in the Government of Canada, as it is represented in GEDS, down to the director level.</p>
+        <p class="intro_graph lang_fr invisible">Cette application créera un organigramme pour n'importe quel ministère de haut niveau du gouvernement du Canada, tel qu'il est représenté dans le SAGE, jusqu'au niveau du directeur.</p>
         <div class="form-group lang_en">
           <label for="select-1">Select a department:</label>
-          <select class="select" id="selectDept">
+          <select class="select lang_en" id="selectDept">
             <option selected value="Accessibility Standards Canada">Accessibility Standards Canada</option>
             <option value="Administrative Tribunals Support Service of Canada">Administrative Tribunals Support Service of Canada</option>
             <option value="Agriculture and Agri-Food Canada">Agriculture and Agri-Food Canada</option>
@@ -196,7 +195,7 @@
         </div>
         <div class="form-group lang_fr invisible">
           <label for="select-1">Sélectionnez un département :</label>
-          <select class="select" id="selectDept">
+          <select class="select lang_fr" id="selectDept">
             <option selected value="Accessibility Standards Canada">Normes d'accessibilité Canada</option>
             <option value="Administrative Tribunals Support Service of Canada">Service canadien d'appui aux tribunaux administratifs</option>
             <option value="Agriculture and Agri-Food Canada">Agriculture et agroalimentaire Canada</option>
@@ -349,7 +348,7 @@
             <option value="Women and Gender Equality Canada">Femmes et égalité des genres Canada</option>
           </select>
         </div>
-         <div class="form-group lang_en">
+         <div class="form-group layout_form lang_en">
           <label for="select-1">Select a layout:</label>
           <select class="select" id="selectLayout">
             <option selected value="horizontal">Horizontal</option>
@@ -357,7 +356,7 @@
             <option value="invertedVertical">Vertical, right aligned</option>
           </select>
         </div>
-         <div class="form-group lang_fr invisible">
+         <div class="form-group layout_form lang_fr invisible">
           <label for="select-1">Sélectionnez une orientation :</label>
           <select class="select" id="selectLayout">
             <option selected value="horizontal">horizontale</option>
@@ -381,7 +380,8 @@
         </button>
       </div>
       <div class="cs1 ce12">
-        <p class="p-small lang_en">For questions or feedback about this project, email william.wolfewylie@hrsdc-rhdcc.gc.ca at ESDC's Chief Data Office.</p>
+        <p class="contact_graph p-small lang_en">For questions or feedback about this project, email william.wolfewylie@hrsdc-rhdcc.gc.ca at ESDC's Chief Data Office.</p>
+        <p class="contact_graph p-small lang_fr invisible">Pour des questions ou des commentaires sur ce projet, envoyez un courriel a william.wolfewylie@hrsdc-rhdcc.gc.ca chez the Bureau de la dirigeante principale des données de l'EDSC</p>
       </div>
     </div>
     
