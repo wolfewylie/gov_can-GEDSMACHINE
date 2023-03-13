@@ -76,7 +76,20 @@ for each_staff_member in gedsData:
 
 with open('data_prep/json_files/govTree.json', 'w') as outfile:
     json.dump(departmentTree, outfile)
-        
+
+#this little bit is just to make it easier to create the <select> <option> list in the miro app later.
+departmentList = []
+
 for each_department in departmentTree['Canada']['childOrgs']:
+    departmentList.append(each_department)
     with open('data_prep/json_files/department_files/' + each_department + '.json', 'w') as outfile:
         json.dump(departmentTree['Canada']['childOrgs'][each_department], outfile)
+
+departmentList.sort(key=str.lower)
+for each_option in departmentList:
+    print('<option selected value="' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '">' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '</option>')
+print(' ')
+print('-----------------------------')
+print(' ')
+for each_option in departmentList:
+    print('<option selected value="' + departmentTree['Canada']['childOrgs'][each_option]['name_en'] + '">' + departmentTree['Canada']['childOrgs'][each_option]['name_fr'] + '</option>')

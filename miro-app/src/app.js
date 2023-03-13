@@ -632,22 +632,30 @@ async function drawInvertedVertical(departmentName, horizontalOffset, verticalOf
   })
 }
 
+let activeLanguage = "lang_en";
+
 //Setting up the listeners for the user-facing menus and buttons
 document.getElementById('languageToggle').addEventListener('click', function() {
     if(document.getElementById('languageToggle').value == "EN") {
         document.getElementById('languageToggle').innerHTML = "EN"
         document.getElementById('languageToggle').value = "FR"
+        activeLanguage = "lang_fr"
     }
     if(document.getElementById('languageToggle').value == "FR") {
         document.getElementById('languageToggle').innerHTML = "FR"
         document.getElementById('languageToggle').value = "EN"
+        activeLanguage = "lang_en"
+    }
+    let languageElements = document.getElementsByClassName('lang_en');
+    for(each_element in languageElements) {
+        each_element.classList.toggle('invisible');
     }
 })
 
 document.getElementById('drawStart').addEventListener('click', function() {
-  let departmentToDraw = document.getElementById('selectDept').value;
-  let layoutChoice = document.getElementById('selectLayout').value;
-  let frenchValue = True;
+  let departmentToDraw = document.querySelector('#selectDept.' + activeLanguage).value;
+  let layoutChoice = document.querySelector('#selectLayout.' + activeLanguage).value;
+  activeLanguage == "lang_fr" ? frenchValue = true : frenchValue = false;
 //   let horizontalOffset = parseInt(document.getElementById('horOffset').value);
 //   if (horizontalOffset == NaN) {
     let horizontalOffset = 0;

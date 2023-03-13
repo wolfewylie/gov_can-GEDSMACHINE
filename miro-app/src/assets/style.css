@@ -38,3 +38,7 @@ img {
 .button {
   text-decoration: none;
 }
+
+.invisible {
+  display: none;
+}
