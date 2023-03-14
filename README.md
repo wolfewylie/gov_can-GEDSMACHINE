@@ -23,7 +23,7 @@ Once you draw a department or two, you can use Miro's built-in features to draw 
 
 ![Linkages between teams at the Canadian Space Agency and the Canadian Dairy Commission](screenshots/draw.png "Linkages between teams at the Canadian Space Agency and the Canadian Dairy Commission")
 
-Privacy: The app collects anonymous Google Analytics to track approximately popularity and usage. No individual or identifiable information is collected or stored. No Miro account information is collected or stored.
+Privacy: The app collects anonymous Google Analytics to track anonymous popularity and usage. No individual or identifiable information is collected or stored. No Miro account information is collected or stored.
 
 ### To work on the tool on your own
 The GEDS data comes from the open data portal [here](https://api.geds-sage.gc.ca/GEDS20/dist/opendata/gedsOpenDataJson.zip).
