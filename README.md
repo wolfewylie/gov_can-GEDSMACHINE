@@ -3,13 +3,15 @@ This takes the open data JSON from GEDS on the Government of Canada Open Data po
 
 
 ### To install the app in Miro
-The app install link [is here](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F). Click it and follow the prompts.
+The install the app for your Team in Miro, [CLICK HERE](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F). 
 
 ![The Miro App installation screen. Pick a team to install the app for all boards in that team.](screenshots/permissions.png "The Miro App installation screen")
 
 From there, Miro may or may not send you back to your boards. So click the Miro icon in the top-left corner or go directly to [Miro.com](https://www.miro.com).
 
 ![The app has been installed for all of the boards in your selected team](screenshots/boards.png "The Miro board picking screen")
+
+The app has been installed for all of the boards in your selected team. Note that, by default, Miro will show you all the boards you have access to. Click on the "Boards in this team" button on the left sidebar to show only the boards that have been granted access to the app. Then you may open a Board or create a new Board.
 
 Once you have a board open, the app drawer is on the left-hand toolbar, at the bottom. If you open it, you should see the Magic GEDS Machine listed. 
 
