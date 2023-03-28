@@ -3,7 +3,7 @@ This takes the open data JSON from GEDS on the Government of Canada Open Data po
 
 
 ### To install the app in Miro
-The install the app for your Team in Miro, [CLICK HERE](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F). 
+To install the app for your Team in Miro, [CLICK HERE](https://miro.com/oauth/authorize/?response_type=code&client_id=3458764547523651394&redirect_uri=%2Fconfirm-app-install%2F). 
 
 ![The Miro App installation screen. Pick a team to install the app for all boards in that team.](screenshots/permissions.png "The Miro App installation screen")
 
