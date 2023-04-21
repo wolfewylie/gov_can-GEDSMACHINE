@@ -1,4 +1,4 @@
-# gov_can-GEDSMACHINE
+# Map the Govt. of Canada
 This takes the open data JSON from GEDS on the Government of Canada Open Data portal and inverts it into a tree of the entire government's structure. Secondly, it integrates with Miro to create a team-by-team visualization of that structure.
 
 
