@@ -1,3 +1,25 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+
+//Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyDiSRsxaeg4sSzmEkazb8ySOzrkqEu76OI",
+    authDomain: "magic-geds.firebaseapp.com",
+    projectId: "magic-geds",
+    storageBucket: "magic-geds.appspot.com",
+    messagingSenderId: "1056547024311",
+    appId: "1:1056547024311:web:1c4a1cde6cbdaef9328c32",
+    measurementId: "G-5Q4KEK5KCF"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+logEvent(analytics, 'page_view', { page_title: "landing_page"});
+
+
 const linkResources = {
     "Accessibility Standards Canada": "https://yiopjq.ph.files.1drv.com/y4mxMCw4xhJrG78wWXFizgbGEnpn-4SnbNZi_xDsyrXEQsNwmrvodedePRnEfkzxM7nYE99E7Y1u7R28-i-1NnIYmPmFvRMrUaobEdLNE04YH_zl9AU1F-sLukmID0YEzhU8f0KVqgMPzG7idL_l--mNw7NI6551Gv84VZTpglRBr-qExBl15UpVlDiIS0S7ETQ0O7wMGdeg5nUo-G7jHpdWg", 
     "Administrative Tribunals Support Service of Canada": "https://yiopjq.ph.files.1drv.com/y4m6UH0qffIgSAn59WEItrftrDA1QEseJtgXaDqOjot2PKZEG6C1lO2Jmocp322ibd82ItKJOKPAV2XC64ZZ66pJYyeiBYYKMPmUAQ7H34xeQwvl15Ewd-3MDSVA87pDUKgdylgq3Umx7E3-QzI1eI8JkpA-OR9-t4fKChsKD8WNs96pVZaAUeQIzbl3tK4ZDRP8HSe0mxdsEsdAJG429v97A", 
@@ -685,6 +707,13 @@ document.getElementById('drawStart').addEventListener('click', function() {
     let verticalOffset = 0;
 //   }
   let datalink = linkResources[departmentToDraw]
+
+  logEvent(analytics, 'OrgDraw', {
+    "department": departmentToDraw,
+    "format": layoutChoice,
+    "language": activeLanguage
+  })
+
 //   logEvent(analytics, 'select_content', {
 //     content_type: "department",
 //     content_id: departmentToDraw
@@ -693,6 +722,12 @@ document.getElementById('drawStart').addEventListener('click', function() {
 //     content_type: "format",
 //     content_id: layoutChoice
 //     });
+//   logEvent(analytics, 'select_content', {
+//     content_type: "language",
+//     content_id: activeLanguage
+//     });
+
+
 
   fetch(datalink)
   .then((response) => response.json())
